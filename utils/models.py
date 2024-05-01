@@ -5,8 +5,19 @@ from django.db import models
 nb = dict(null=True, blank=True)
 
 
+class GetOrNoneManager(models.Manager):
+    """returns none if object doesn't exist else model instance"""
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except ObjectDoesNotExist:
+            return None
+
+
 class CreateTracker(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    objects = GetOrNoneManager()
 
     class Meta:
         abstract = True
@@ -20,10 +31,3 @@ class CreateUpdateTracker(CreateTracker):
         abstract = True
 
 
-class GetOrNoneManager(models.Manager):
-    """returns none if object doesn't exist else model instance"""
-    def get_or_none(self, **kwargs):
-        try:
-            return self.get(**kwargs)
-        except ObjectDoesNotExist:
-            return None
