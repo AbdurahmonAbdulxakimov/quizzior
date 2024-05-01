@@ -24,6 +24,8 @@ class User(CreateUpdateTracker):
     language_code = models.CharField(max_length=8, help_text="Telegram client's lang", **nb)
     deep_link = models.CharField(max_length=64, **nb)
 
+    score = models.BigIntegerField(default=100)
+
     is_blocked_bot = models.BooleanField(default=False)
 
     is_admin = models.BooleanField(default=False)
@@ -73,13 +75,3 @@ class User(CreateUpdateTracker):
             return f'@{self.username}'
         return f"{self.first_name} {self.last_name}" if self.last_name else f"{self.first_name}"
 
-
-class Location(CreateTracker):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-
-    objects = GetOrNoneManager()
-
-    def __str__(self):
-        return f"user: {self.user}, created at {self.created_at.strftime('(%H:%M, %d %B %Y)')}"
