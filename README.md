@@ -1,32 +1,23 @@
-# django-telegram-bot
+# Quizzior Django Telegram Bot
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/50623190/201977740-68ef4044-9cfa-45da-8897-2a90ecfa33ae.png" align="center" height="350px" weight="350px">
 </p>
 
-Comfortable Django + python-telegram-bot + Celery + Redis + Postgres + Dokku + GitHub Actions template. Production-ready Telegram bot with database, admin panel and a bunch of useful built-in methods.
-
-
-⭐ graph: 
-[![Sparkline](https://stars.medv.io/ohld/django-telegram-bot.svg)](https://stars.medv.io/ohld/django-telegram-bot)
 
 ## Features
 
-* Database: Postgres, Sqlite3, MySQL - you decide!
+* Database: Postgres
 * Admin panel (thanks to [Django](https://docs.djangoproject.com/en/3.1/intro/tutorial01/))
 * Background jobs using [Celery](https://docs.celeryproject.org/en/stable/)
-* [Production-ready](https://github.com/ohld/django-telegram-bot/wiki/Production-Deployment-using-Dokku) deployment using [Dokku](https://dokku.com)
-* Telegram API usage in polling or [webhook mode](https://core.telegram.org/bots/api#setwebhook)
+* Telegram API usage in polling
 * Export all users in `.csv`
 * Native telegram [commands in menu](https://github.com/ohld/django-telegram-bot/blob/main/.github/imgs/bot_commands_example.jpg)
-  * In order to edit or delete these commands you'll need to use `set_my_commands` bot's method just like in [tgbot.dispatcher.setup_my_commands](https://github.com/ohld/django-telegram-bot/blob/main/tgbot/dispatcher.py#L150-L156)
 
 Built-in Telegram bot methods:
 * `/broadcast` — send message to all users (admin command)
 * `/export_users` — bot sends you info about your users in .csv file (admin command)
-* `/stats` — show basic bot stats 
-* `/ask_for_location` — log user location when received and reverse geocode it to get country, city, etc.
-
+* `/stats` — show basic bot stats
 
 ## Content
 
