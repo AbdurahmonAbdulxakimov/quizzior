@@ -17,6 +17,7 @@ from tgbot.handlers.onboarding import handlers as onboarding_handlers
 from tgbot.handlers.broadcast_message import handlers as broadcast_handlers
 from tgbot.main import bot
 from tgbot.conv_handler import conv_handler
+from tgbot.handlers.quiz import handlers as quiz_handlers
 
 
 def setup_dispatcher(dp):
@@ -33,7 +34,8 @@ def setup_dispatcher(dp):
 
     # broadcast message
     dp.add_handler(
-        MessageHandler(Filters.regex(rf'^{broadcast_command}(/s)?.*'), broadcast_handlers.broadcast_command_with_message)
+        MessageHandler(Filters.regex(rf'^{broadcast_command}(/s)?.*'),
+                       broadcast_handlers.broadcast_command_with_message)
     )
     dp.add_handler(
         CallbackQueryHandler(broadcast_handlers.broadcast_decision_handler, pattern=f"^{CONFIRM_DECLINE_BROADCAST}")
@@ -48,6 +50,11 @@ def setup_dispatcher(dp):
     dp.add_error_handler(error.send_stacktrace_to_tg_chat)
 
     dp.add_handler(conv_handler)
+
+    # handling quiz
+    dp.add_handler(CommandHandler("cancel", quiz_handlers.cancel))
+    dp.add_handler(CommandHandler("quiz", quiz_handlers.start_quiz))
+    dp.add_handler(CallbackQueryHandler(quiz_handlers.play, pattern="play"))
 
     # EXAMPLES FOR HANDLERS
     # dp.add_handler(MessageHandler(Filters.text, <function_handler>))

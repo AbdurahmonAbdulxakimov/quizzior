@@ -8,9 +8,12 @@ from telegram.ext import Updater
 
 from dtb.settings import TELEGRAM_TOKEN
 from tgbot.dispatcher import setup_dispatcher
+from tgbot.main import bot
+from tgbot.system_commands import set_up_commands
 
 
 def run_polling(tg_token: str = TELEGRAM_TOKEN):
+    set_up_commands(bot)
     """ Run bot in polling mode """
     updater = Updater(tg_token, use_context=True)
 

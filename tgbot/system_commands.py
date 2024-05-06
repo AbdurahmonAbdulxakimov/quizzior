@@ -10,10 +10,9 @@ def set_up_commands(bot_instance: Bot) -> None:
     langs_with_commands: Dict[str, Dict[str, str]] = {
         'en': {
             'start': 'Start django bot 🚀',
-            'stats': 'Statistics of bot 📊',
             'admin': 'Show admin info ℹ️',
-            'broadcast': 'Broadcast message 📨',
-            'export_users': 'Export users.csv 👥',
+            'search': 'Search quizzes 🔍',
+            'quiz': 'Start quiz 🚀',
         },
     }
 
@@ -27,4 +26,4 @@ def set_up_commands(bot_instance: Bot) -> None:
         )
 
 
-set_up_commands(bot)
+

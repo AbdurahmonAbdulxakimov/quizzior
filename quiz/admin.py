@@ -32,5 +32,5 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(UserQuizStatistic)
 class UserQuizStatisticAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'quiz')
+    list_display = ('id', 'user', 'quiz', 'correct_answers', 'wrong_answers')
     list_display_links = ('id', 'user', 'quiz')

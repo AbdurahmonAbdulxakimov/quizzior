@@ -36,7 +36,11 @@ class Answer(CreateUpdateTracker):
 class UserQuizStatistic(CreateUpdateTracker):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_quiz_statistic')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='user_quiz_statistic')
-    correct_answers = models.ManyToManyField(Answer, related_name='user_quiz_statistic', blank=True)
+
+    user_answers = models.ManyToManyField(Answer, related_name='user_quiz_statistic', blank=True)
+
+    correct_answers = models.IntegerField(default=0)
+    wrong_answers = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.user_id} - {self.quiz_id}"
