@@ -1,10 +1,8 @@
-import datetime
-
 from django.utils import timezone
 from django.db.models import Q
 
-from telegram import Update, ParseMode, Poll, Message, Chat
-from telegram.ext import CallbackContext, ConversationHandler, ContextTypes
+from telegram import Update, ParseMode
+from telegram.ext import CallbackContext
 
 from users.models import User
 from quiz.models import Quiz, Answer, UserQuizStatistic
