@@ -12,8 +12,9 @@ services:
       - POSTGRES_PASSWORD=postgres
     env_file:
       - ./.env
+    command: -p 5433
     ports:
-      - "5433:5432"
+      - "5433:5433"
   redis:
     image: redis:alpine
     container_name: dtb_redis
