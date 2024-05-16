@@ -6,20 +6,37 @@ on:
       - main
 
 jobs:
-  build:
+  # build:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #         fetch-depth: 0
+
+  #   - id: deploy
+  #     name: Deploy to dokku
+  #     uses: idoberko2/dokku-deploy-github-action@v1
+  #     with:
+  #         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         dokku-host: 't.okhlopkov.com'
+  #         app-name: 'dtb'
+  #         git-push-flags: '--force'
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: [ubuntu-latest]
     steps:
-    - uses: actions/checkout@v2
-      with:
-          fetch-depth: 0
-
-    - id: deploy
-      name: Deploy to dokku
-      uses: idoberko2/dokku-deploy-github-action@v1
-      with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          dokku-host: 't.okhlopkov.com'
-          app-name: 'dtb'
-          git-push-flags: '--force'
+      - uses: actions/checkout@v1
+      - name: Push to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: >
+            cd ${{ secrets.PROJECT_PATH }} 
+            && git pull 
+            && docker compose up -d --build
