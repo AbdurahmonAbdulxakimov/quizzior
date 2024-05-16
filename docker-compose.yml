@@ -14,7 +14,7 @@ services:
       - ./.env
     command: -p 5433
     ports:
-      - "5433:5433"
+      - "0.0.0.0:5433:5433"
   redis:
     image: redis:alpine
     container_name: dtb_redis
