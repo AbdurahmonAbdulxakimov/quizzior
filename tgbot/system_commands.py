@@ -8,11 +8,12 @@ from tgbot.main import bot
 def set_up_commands(bot_instance: Bot) -> None:
 
     langs_with_commands: Dict[str, Dict[str, str]] = {
-        'en': {
-            'start': 'Start django bot 🚀',
-            'admin': 'Show admin info ℹ️',
-            'search': 'Search quizzes 🔍',
-            'quiz': 'Start quiz 🚀',
+        "en": {
+            "start": "Start django bot 🚀",
+            "search": "Search quizzes 🔍",
+            "quiz": "Start quiz 🚀",
+            "create_quiz": "Create a new quiz 🎲",
+            "cancel": "Cancel running quiz ❌",
         },
     }
 
@@ -21,9 +22,7 @@ def set_up_commands(bot_instance: Bot) -> None:
         bot_instance.set_my_commands(
             language_code=language_code,
             commands=[
-                BotCommand(command, description) for command, description in langs_with_commands[language_code].items()
-            ]
+                BotCommand(command, description)
+                for command, description in langs_with_commands[language_code].items()
+            ],
         )
-
-
-
