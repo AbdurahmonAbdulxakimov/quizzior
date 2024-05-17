@@ -104,7 +104,7 @@ def perform_create(update: Update, context: CallbackContext) -> int:
 
 def search_quiz(update: Update, context: CallbackContext) -> None:
     try:
-        user_input = update.message.text.split("/search ")[1]
+        user_input = update.message.text.split("/search ")[1].strip()
         queries = (
             Q(title__icontains=user_input)
             | Q(category__icontains=user_input)
