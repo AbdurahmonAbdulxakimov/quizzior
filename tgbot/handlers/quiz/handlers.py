@@ -121,7 +121,7 @@ def search_quiz(update: Update, context: CallbackContext) -> None:
             msg += (
                 f"\n=== Id: {quiz.id} ===\n"
                 f"<strong>Title</strong>: {quiz.title}\n"
-                f"<strong>Category</strong>: {quiz.Category}\n"
+                f"<strong>Category</strong>: {quiz.category}\n"
                 f"<strong>Questions</strong>: {quiz.questions.count()}\n"
                 f"<strong>Author</strong>: {quiz.author.username}\n"
             )
