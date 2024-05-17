@@ -1,10 +1,10 @@
 from django.dispatch import receiver
-from django.db.models.signals import pre_save
+from django.db.models.signals import pre_save, post_save
 
 from quiz.models import UserQuizStatistic
 
 
-@receiver(pre_save, sender=UserQuizStatistic)
+@receiver(post_save, sender=UserQuizStatistic)
 def update_quiz_statistic(sender, instance, **kwargs):
     correct_answers = 0
     wrong_answers = 0
