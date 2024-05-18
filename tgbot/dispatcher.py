@@ -61,7 +61,7 @@ def setup_dispatcher(dp):
 
     # handling quiz
     dp.add_handler(CommandHandler("cancel", quiz_handlers.cancel))
-    dp.add_handler(CommandHandler("search", quiz_handlers.search_quiz)),
+    dp.add_handler(CommandHandler("search", quiz_handlers.search_quiz))
     dp.add_handler(CommandHandler("quiz", quiz_handlers.start_quiz))
     dp.add_handler(CallbackQueryHandler(quiz_handlers.play, pattern="play"))
 

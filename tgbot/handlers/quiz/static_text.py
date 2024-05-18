@@ -4,7 +4,8 @@
 
 quiz_create_instructions = (
     "Please send the title of your quiz.\n\n"
-    "You can cancel creation any time by calling /cancel_creation command."
+    'You can cancel creation (after you provide "title" and "category")\n'
+    "by calling /cancel_creation command."
 )
 quiz_create_category_instructions = (
     "Please send the category that your quiz might belong to."
@@ -25,11 +26,11 @@ start_quiz_instructions = (
     "/start_quiz 777 "
 )
 
-creation_success = "Quiz created successfully"
-cancel_creation = "Quiz creation cancelled successfully"
-quiz_question_added = "Quiz question added successfully"
-quiz_title_error = "Please send the title of your quiz"
-quiz_category_error = "Please send the category of your quiz"
+creation_success = "Quiz created successfully✔️"
+cancel_creation = "Quiz creation cancelled successfully✔️"
+quiz_question_added = "Quiz question added successfully✔️"
+quiz_title_error = "Please provide a valid title for your quiz❗"
+quiz_category_error = "Please provide a valid category for your quiz❗"
 quiz_not_found = "🤔 There is no quiz with that ID"
 quiz_stoped = "Quiz stoped!"
 running_quiz_warning = (

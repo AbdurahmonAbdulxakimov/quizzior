@@ -34,7 +34,7 @@ def create_quiz(update: Update, context: CallbackContext) -> str:
 
 def quiz_create_title(update: Update, context: CallbackContext) -> str:
     title = update.message.text.strip()
-    if not title:
+    if not title or "/cancel_creation" in title:
         update.message.reply_text(text=static_text.quiz_title_error)
         return static_text.state.get("create_quiz_title")
 
@@ -51,7 +51,7 @@ def quiz_create_title(update: Update, context: CallbackContext) -> str:
 
 def quiz_create_category(update: Update, context: CallbackContext) -> str:
     category = update.message.text.strip()
-    if not category:
+    if not category or "/cancel_creation" in category:
         update.message.reply_text(text=static_text.quiz_category_error)
         return static_text.state.get("create_quiz_category")
 
